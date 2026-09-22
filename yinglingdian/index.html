@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英灵殿-北欧神话、瓦尔哈拉与诸神黄昏的历史与传说</title>
+    <meta name="description" content="英灵殿（Valhalla）是北欧神话中英灵战士聚集的殿堂，也是奥丁神域的重要组成部分。本站深入解析英灵殿的传说背景、瓦尔哈拉的功能、诸神黄昏的预言以及其在现代文化中的影响。">
+    <meta name="keywords" content="英灵殿, 北欧神话, 瓦尔哈拉, 奥丁, 诸神黄昏, 英灵战士, 漫威电影, 北欧神话百科">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #e94560;
+            --text-color: #f1f1f1;
+            --text-muted: #a0a0a0;
+            --gold: #d4af37;
+            --card-bg: #242442;
+            --font-main: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: rgba(26, 26, 46, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(26, 26, 46, 0.9)), url('https://picsum.photos/seed/norsemyth/1920/1080.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            color: #ddd;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ff5c7c;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--gold);
+            color: var(--primary-color);
+        }
+
+        /* Introduction */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .intro-text h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .intro-text p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+
+        .intro-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Features/Cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border-color: var(--gold);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Mythology Section */
+        .mythology-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .myth-item {
+            display: flex;
+            background-color: var(--secondary-color);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .myth-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 5px;
+            flex: 1;
+        }
+
+        .myth-item span {
+            color: var(--gold);
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .myth-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Modern Culture */
+        .modern-section {
+            background-color: var(--secondary-color);
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .media-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 200px;
+        }
+
+        .media-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .media-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .media-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.8);
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            background-color: var(--card-bg);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .faq-question:hover {
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px 20px;
+            color: var(--text-muted);
+            display: none;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--gold);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0f0f1a;
+            padding: 60px 0 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .footer-col h4 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            color: #555;
+            font-size: 0.85rem;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary-color);
+                padding: 20px;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <span>⚔️</span> Valhalla
+                </div>
+                <div class="menu-toggle" id="mobile-menu">☰</div>
+                <ul class="nav-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#about">关于英灵殿</a></li>
+                    <li><a href="#features">核心概念</a></li>
+                    <li><a href="#mythology">神话体系</a></li>
+                    <li><a href="#culture">现代文化</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>英灵殿</h1>
+                <p>瓦尔哈拉（Valhalla）——诸神黄昏前，英灵战士的永恒战场与荣耀殿堂</p>
+                <div class="hero-btns">
+                    <a href="#about" class="btn">探索传说</a>
+                    <a href="#mythology" class="btn btn-outline">阅读神话</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="intro-grid">
+                    <div class="intro-text">
+                        <h2>什么是英灵殿？</h2>
+                        <p>在北欧神话中，英灵殿（Old Norse: Valhalla），又称瓦尔哈拉，是主神奥丁神域中的巨大宫殿。这里是专门为在战场上牺牲的英勇战士准备的归宿。</p>
+                        <p>这些被称为“英灵战士”的战士们，在英灵殿中过着永恒的生活。他们每天清晨会穿上铠甲，在神殿的回廊中举行角力比赛，直到日落时分，他们会杀死的野猪被端上桌来，享受盛宴。夜幕降临后，英灵战士们会与瓦尔基里一同痛饮蜜酒。这种生活直到诸神黄昏（Ragnarök）爆发，他们将离开英灵殿，重返战场，协助众神对抗巨人之王洛基及其率领的怪物大军，为世界迎来新的秩序。</p>
+                    </div>
+                    <img src="https://picsum.photos/seed/norsevalhalla/600/400.jpg" alt="北欧神话概念图" class="intro-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Features -->
+        <section id="features" class="section" style="background-color: #15152a;">
+            <div class="container">
+                <h2 class="section-title">英灵殿的三大核心</h2>
+                <p class="section-subtitle">理解英灵殿文化的关键要素</p>
+                <div class="features-grid">
+                    <article class="card">
+                        <div class="card-icon">⚔️</div>
+                        <h3>英灵战士</h3>
+                        <p>指那些在战斗中光荣战死的战士。根据神话传说，只有战死的战士才能进入英灵殿，而死于病痛、老死或自杀的人则会被送往赫尔海姆（Helheim），即幽冥世界。</p>
+                    </article>
+                    <article class="card">
+                        <div class="card-icon">🦅</div>
+                        <h3>瓦尔基里</h3>
+                        <p>“选择死者者”。她们是奥丁的侍女，通常被描绘为长着翅膀的女武神。她们从战场上挑选出最英勇的战士，引导他们前往英灵殿，并为他们斟满蜜酒。</p>
+                    </article>
+                    <article class="card">
+                        <div class="card-icon">🍺</div>
+                        <h3>永恒盛宴</h3>
+                        <p>英灵殿的日常饮食是极其丰盛的。传说中，英灵战士的坐骑斯莱普尼斯（Sleipnir，奥丁的八足神马）会被宰杀，每天早上宰杀一次，但到晚上又会复活，供战士们享用。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mythology Details -->
+        <section id="mythology" class="section">
+            <div class="container">
+                <h2 class="section-title">神话体系解析</h2>
+                <div class="mythology-list">
+                    <div class="myth-item">
+                        <h3>诸神黄昏</h3>
+                        <span>关键预言</span>
+                        <p>英灵殿的命运与世界的命运紧密相连。当诸神黄昏来临，英灵殿的大门将敞开，英灵战士们将手持古神兵器，列队出征，与诸神并肩作战，对抗巨人与怪物。</p>
+                    </div>
+                    <div class="myth-item">
+                        <h3>金宫</h3>
+                        <span>建筑结构</span>
+                        <p>英灵殿并非一座普通的建筑，它被描述为一座金碧辉煌的巨大殿堂，由金柱支撑，屋檐由盾牌铺成，墙壁由长矛装饰，象征着无尽的荣耀与防御。</p>
+                    </div>
+                    <div class="myth-item">
+                        <h3>聚集之地</h3>
+                        <span>地理概念</span>
+                        <p>英灵殿位于英灵神域，位于中庭（Miðgarðr）之上。它是连接现世与神域的桥梁，也是勇士灵魂的最终归宿。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modern Culture -->
+        <section id="culture" class="section modern-section">
+            <div class="container">
+                <h2 class="section-title">现代文化中的英灵殿</h2>
+                <p class="section-subtitle">从文学到影视的跨文化影响</p>
+                <div class="media-grid">
+                    <div class="media-item">
+                        <img src="https://picsum.photos/seed/vikings/400/300.jpg" alt="维京文化">
+                        <div class="media-caption">维京文化的浪漫化解读</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="https://picsum.photos/seed/marvel/400/300.jpg" alt="漫威电影">
+                        <div class="media-caption">漫威电影宇宙的英灵殿</div>
+                    </div>
+                    <div class="media-item">
+                        <img src="https://picsum.photos/seed/gaming/400/300.jpg" alt="电子游戏">
+                        <div class="media-caption">电子游戏中的北欧神话</div>
+                    </div>
+                </div>
+                <div style="margin-top: 30px; text-align: center; color: var(--text-muted);">
+                    <p>在现代流行文化中，“英灵殿”一词常被借用来指代“英雄的聚集地”或“最终的归宿”。无论是在游戏、动漫还是文学作品中，这一概念都象征着勇气、荣耀和战斗精神。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section">
+            <div class="container">
+                <h2 class="section-title">常见问题</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="faq-question">所有战死的战士都能去英灵殿吗？</div>
+                        <div class="faq-answer">并非所有。根据《诗体埃达》的记载，只有那些在战场上战死的人才有资格进入英灵殿。死于疾病、老死或自杀的人会被送往赫尔海姆。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">英灵殿和瓦尔哈拉有什么区别？</div>
+                        <div class="faq-answer">在北欧神话的原始文本中，这两个词经常互换使用，指代同一个地方——奥丁接待英灵战士的殿堂。但在现代英语翻译中，有时会为了区分语境而稍作区分，但在中文语境下通常视为同一概念。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">为什么英灵战士每天都要打仗？</div>
+                        <div class="faq-answer">这主要是为了准备即将到来的诸神黄昏。英灵殿的生活是一种训练和准备状态，战士们通过角力锻炼身体，通过饮酒保持精神，为了在世界的末日之战中成为诸神的利刃。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于本站</h4>
+                    <p style="color: #777; font-size: 0.9rem;">
+                        本站致力于普及北欧神话知识，特别是关于英灵殿（瓦尔哈拉）的传说与历史文化背景。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#home">回到首页</a></li>
+                        <li><a href="#about">神话传说</a></li>
+                        <li><a href="#mythology">诸神黄昏</a></li>
+                        <li><a href="#culture">文化影响</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>相关资源</h4>
+                    <ul>
+                        <li><a href="#">《诗体埃达》</a></li>
+                        <li><a href="#">《散文埃达》</a></li>
+                        <li><a href="#">北欧历史百科</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 北欧神话探索者 | 英灵殿专题页
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
