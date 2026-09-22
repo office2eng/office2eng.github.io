@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="关注城市公共安全与地铁运营规范，提供关于嫌犯闯入地铁轨道事件的深度分析、安全防范指南、应急处理措施及典型案例解读。">
+    <meta name="keywords" content="嫌犯闯入地铁轨道,地铁安全,城市轨道交通,公共安全,地铁应急处理,地铁防范措施">
+    <title>嫌犯闯入地铁轨道-城市轨道交通公共安全与应急防范指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e63946;
+            --secondary-color: #1d3557;
+            --accent-color: #457b9d;
+            --bg-light: #f1faee;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+            --radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .header-actions button {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border: none;
+            padding: 8px 20px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .header-actions button:hover {
+            opacity: 0.9;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(rgba(29, 53, 87, 0.8), rgba(29, 53, 87, 0.7)), url('https://picsum.photos/seed/metro1/1600/600') no-repeat center center/cover;
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--secondary-color);
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        /* Content Section */
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .article-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 30px;
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .article-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 25px;
+        }
+
+        .article-meta {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .article-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .article-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .sidebar-widget {
+            background: var(--white);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sidebar-widget h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .checklist li::before {
+            content: "✓";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .info-box {
+            background-color: #e8f4fc;
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+
+        .data-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .data-item {
+            text-align: center;
+            padding: 10px;
+            background: var(--bg-light);
+            border-radius: var(--radius);
+        }
+
+        .data-item strong {
+            display: block;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .data-item span {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        /* Safety Guide Section */
+        .safety-section {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 60px 20px;
+        }
+
+        .safety-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .safety-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: var(--radius);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .safety-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .safety-card p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: #888;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+            }
+
+            nav ul {
+                margin: 15px 0;
+                gap: 15px;
+                font-size: 0.9rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span>轨道</span>安全网
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">安全法规</a></li>
+                    <li><a href="#">案例分析</a></li>
+                    <li><a href="#">应急演练</a></li>
+                    <li><a href="#">防护装备</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button>立即求助</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>警惕地铁安全风险：嫌犯闯入轨道事件的深度解析</h1>
+            <p>城市轨道交通作为高密度人流场所，一旦发生人员闯入轨道事件，后果不堪设想。了解防范机制与应急处置流程，是每一位乘客和运营者的必修课。</p>
+            <div class="cta-group">
+                <button class="btn btn-primary">查看应急指南</button>
+                <button class="btn btn-outline">了解防护措施</button>
+            </div>
+        </section>
+
+        <div class="main-container">
+            <!-- Articles Section -->
+            <section class="content-area">
+                <h2 class="section-title">最新动态与案例分析</h2>
+
+                <article class="article-card">
+                    <img src="https://picsum.photos/seed/subway2/800/400" alt="地铁轨道维护现场" class="article-image">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span>2023-10-24</span>
+                            <span>安全专栏</span>
+                        </div>
+                        <h2>地铁运营中防范人员闯入轨道的关键措施</h2>
+                        <p>针对近期多起关于人员意外或故意闯入地铁轨道的事件，轨道交通运营方加强了全流程管控。本文将深入探讨车站安检的必要性、屏蔽门的日常维护以及站台工作人员的应急响应机制。</p>
+                        <a href="#" class="read-more">阅读全文 &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span>2023-10-20</span>
+                            <span>法律解读</span>
+                        </div>
+                        <h2>擅自进入轨道交通限界需承担何种法律责任？</h2>
+                        <p>根据《城市轨道交通运营管理规定》，故意破坏轨道设施或干扰列车运行的嫌犯将面临严厉的法律制裁。除了行政处罚外，造成重大安全事故的，还将追究刑事责任。本文详细梳理相关法律法规条款。</p>
+                        <a href="#" class="read-more">阅读全文 &rarr;</a>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span>2023-10-15</span>
+                            <span>乘客安全</span>
+                        </div>
+                        <h2>当列车进站时误入轨道：紧急避险的正确姿势</h2>
+                        <p>对于乘客而言，最危险的时刻往往发生在车门关闭与列车启动之间。如果在站台边缘失去平衡或因恐慌闯入轨道，应立即采取“卧倒、远离列车”的姿势，并大声呼救以触发紧急停车装置。</p>
+                        <a href="#" class="read-more">阅读全文 &rarr;</a>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h3>安全须知</h3>
+                    <ul class="checklist">
+                        <li>请勿倚靠屏蔽门</li>
+                        <li>禁止在轨道上逗留</li>
+                        <li>列车进站请勿越线</li>
+                        <li>发现异物立即报告</li>
+                        <li>遵守限速行驶规定</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3>事件数据统计</h3>
+                    <div class="info-box">
+                        近年来，通过技术手段（如AI监控、雷达探测）拦截闯入轨道的人员比例显著提升。
+                    </div>
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <strong>98.5%</strong>
+                            <span>拦截成功率</span>
+                        </div>
+                        <div class="data-item">
+                            <strong>&lt;2s</strong>
+                            <span>平均反应时间</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3>常见问题</h3>
+                    <div class="info-box" style="background-color: #fff0f0; border-color: #e63946; color: #c00;">
+                        Q: 屏蔽门故障时如何处理？
+                    </div>
+                    <p style="font-size: 0.9rem; margin-top: 10px; color: #555;">
+                        A: 请立即联系站台工作人员，切勿自行尝试开启故障门，并听从指挥退至安全线后等待救援。
+                    </p>
+                </div>
+            </aside>
+        </div>
+
+        <section class="safety-section">
+            <h2 class="section-title" style="border-color: var(--white); color: var(--white);">全方位防护体系</h2>
+            <div class="safety-grid">
+                <div class="safety-card">
+                    <h3>物理屏障</h3>
+                    <p>全封闭式站台屏蔽门与安全线结合，构建第一道物理防线，防止人员意外跌落或闯入。</p>
+                </div>
+                <div class="safety-card">
+                    <h3>智能监控</h3>
+                    <p>部署AI视频分析系统，实时识别站台异常行为，自动报警并联动调度中心。</p>
+                </div>
+                <div class="safety-card">
+                    <h3>紧急制动</h3>
+                    <p>站台紧急停车按钮布局合理，确保在突发情况下能实现零秒响应，最大限度减少伤亡。</p>
+                </div>
+                <div class="safety-card">
+                    <h3>应急演练</h3>
+                    <p>定期开展反恐防暴与人员闯入应急演练，提升工作人员协同处置能力。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>本网站提供的信息仅供参考，旨在普及公共安全知识。</p>
+        <p>&copy; 2023 轨道交通安全服务中心. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
