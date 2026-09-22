@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魔漫相机-智能生成趣味漫画头像与创意写真工具</title>
+    <meta name="description" content="魔漫相机是一款基于AI技术的趣味图像处理工具，用户只需上传照片即可一键生成卡通漫画头像、创意写真及趣味表情包，支持多种滤镜与场景模板。">
+    <meta name="keywords" content="魔漫相机,漫画头像生成,AI漫画制作,趣味拍照,卡通写真,在线修图工具">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff5e5e;
+            --secondary-color: #ff9f43;
+            --accent-color: #2e86de;
+            --bg-color: #f8f9fa;
+            --text-color: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-color);
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 94, 94, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 94, 94, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 16px;
+            color: var(--text-color);
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background-color: rgba(255, 94, 94, 0.2);
+            z-index: -1;
+            border-radius: 4px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-visual {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--card-shadow);
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-visual img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 20px;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #fff0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* How it Works */
+        .steps {
+            background-color: var(--white);
+            padding: 80px 20px;
+        }
+
+        .steps-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .step-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .step-number {
+            font-size: 60px;
+            font-weight: 900;
+            color: rgba(0, 0, 0, 0.05);
+            line-height: 1;
+            min-width: 80px;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .step-content p {
+            color: var(--text-light);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 60px 20px;
+            background-color: #f1f3f5;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay span {
+            color: white;
+            font-weight: 600;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 60px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 20px;
+            color: var(--primary-color);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 20px;
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-bottom: 20px;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #ccc;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .step-item, .step-item:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .step-number {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--primary-color)"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+                <span>魔漫相机</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#features" class="active">功能特色</a></li>
+                    <li><a href="#gallery">效果展示</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="btn-download">立即下载APP</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-container">
+                <h1>把真人变成<span>生动有趣的漫画</span></h1>
+                <p>魔漫相机是一款基于AI图像识别与渲染技术的智能工具。无需绘画基础，只需上传照片，即可一键生成多种风格的卡通漫画头像、创意写真和趣味表情包。</p>
+                
+                <div class="hero-visual">
+                    <img src="https://picsum.photos/seed/moman/800/450" alt="魔漫相机效果展示">
+                    <div style="margin-top:15px; text-align:center; color:#888; font-size:14px;">示例：真人照片一键生成漫画风格</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="section-container">
+                <div class="section-title">
+                    <h2>核心功能亮点</h2>
+                    <p>利用先进的图像处理算法，为您打造独一无二的二次元形象</p>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>一键漫画化</h3>
+                        <p>智能识别面部特征，自动生成Q版动漫形象，保留五官神韵。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎭</div>
+                        <h3>海量场景模板</h3>
+                        <p>内置多种职业、节日、生活场景模板，轻松打造专属漫画写真。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">✨</div>
+                        <h3>趣味表情包</h3>
+                        <p>生成动态表情包素材，支持添加文字气泡，分享更有趣的社交内容。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🖼️</div>
+                        <h3>高清无损输出</h3>
+                        <p>支持高分辨率导出，方便打印制作手机壳、海报或用于个人头像。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section class="steps">
+            <div class="section-container steps-container">
+                <div class="step-item">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>拍摄或上传照片</h3>
+                        <p>从手机相册选择一张清晰的正脸照片，或者直接打开相机进行拍摄。</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>选择风格与模板</h3>
+                        <p>在丰富的漫画风格库中选择喜欢的类型（如日系、美漫、Q版等），并搭配场景模板。</p>
+                    </div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>生成与分享</h3>
+                        <p>点击生成按钮，系统将自动渲染，您可以对细节进行微调，然后保存或分享到社交平台。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery">
+            <div class="section-container">
+                <div class="section-title">
+                    <h2>效果展示</h2>
+                    <p>看看其他用户使用魔漫相机创造出的精彩瞬间</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/moman1/300/300" alt="漫画头像示例">
+                        <div class="gallery-overlay"><span>潮流头像</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/moman2/300/300" alt="职场漫画示例">
+                        <div class="gallery-overlay"><span>职场风格</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/moman3/300/300" alt="可爱Q版示例">
+                        <div class="gallery-overlay"><span>可爱Q版</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/moman4/300/300" alt="节日主题示例">
+                        <div class="gallery-overlay"><span>节日主题</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/moman5/300/300" alt="二次元示例">
+                        <div class="gallery-overlay"><span>二次元</span></div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://picsum.photos/seed/moman6/300/300" alt="创意写真示例">
+                        <div class="gallery-overlay"><span>创意写真</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq">
+            <div class="section-title">
+                <h2>常见问题</h2>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">魔漫相机需要收费吗？</div>
+                <div class="faq-answer">魔漫相机提供基础功能免费使用，部分高级模板、特效或高清导出功能可能需要开通会员或单独付费。</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">生成的图片可以商用吗？</div>
+                <div class="faq-answer">用户生成的图片版权通常归属于用户，但具体使用范围需参照软件内的用户协议。一般个人头像、社交媒体分享均可，商业用途建议咨询官方。</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">上传的照片会被保存吗？</div>
+                <div class="faq-answer">为了保护用户隐私，我们承诺仅对上传的照片进行临时处理，处理完成后会立即删除，不会将您的照片用于商业用途或对外展示。</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">如何提高生成效果？</div>
+                <div class="faq-answer">建议使用光线充足、面部清晰、正对镜头的照片。避免佩戴过于夸张的帽子或遮挡面部的饰品，以获得最佳识别效果。</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>关于魔漫相机</h4>
+                <p style="font-size: 14px; line-height: 1.8; color: #999;">魔漫相机致力于为用户提供最便捷、有趣的图像处理体验，让每个人都能成为漫画主角。</p>
+            </div>
+            <div class="footer-col">
+                <h4>功能导航</h4>
+                <ul>
+                    <li><a href="#">漫画头像生成</a></li>
+                    <li><a href="#">趣味表情包</a></li>
+                    <li><a href="#">高清写真定制</a></li>
+                    <li><a href="#">节日主题模板</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>支持与帮助</h4>
+                <ul>
+                    <li><a href="#">使用教程</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">用户协议</a></li>
+                    <li><a href="#">联系客服</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 魔漫相机工具 版权所有 | 仅供展示用途</p>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的FAQ折叠交互
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // 关闭其他打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // 切换当前项
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
