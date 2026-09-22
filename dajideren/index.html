@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="妲己的任务txt在线阅读页面，提供小说章节目录、剧情简介及阅读指南，支持多种格式下载与在线阅读。">
+    <meta name="keywords" content="妲己的任务txt,小说下载,在线阅读,txt小说,言情小说">
+    <title>妲己的任务txt-在线阅读与章节下载指南</title>
+    <style>
+        :root {
+            --primary-color: #8e44ad;
+            --primary-hover: #9b59b6;
+            --secondary-color: #2c3e50;
+            --bg-color: #f9f9f9;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-radius: 8px;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        /* Main Layout */
+        main {
+            flex: 1;
+            max-width: var(--container-width);
+            width: 100%;
+            margin: 0 auto;
+            padding: var(--spacing-unit);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #8e44ad 0%, #c0392b 100%);
+            color: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Content Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Sidebar / Info */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .info-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+            color: var(--secondary-color);
+        }
+
+        .book-meta-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .book-meta-item span:last-child {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .tags span {
+            display: inline-block;
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        /* Chapter List */
+        .chapter-section {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .chapter-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            background-color: #fafafa;
+        }
+
+        .chapter-header h2 {
+            font-size: 1.25rem;
+            color: var(--secondary-color);
+        }
+
+        .chapter-list {
+            list-style: none;
+        }
+
+        .chapter-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #f5f5f5;
+            transition: background-color 0.2s;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .chapter-item:last-child {
+            border-bottom: none;
+        }
+
+        .chapter-item:hover {
+            background-color: #f9f0ff;
+        }
+
+        .chapter-title {
+            flex: 1;
+        }
+
+        .chapter-date {
+            font-size: 0.85rem;
+            color: #999;
+            margin-left: 15px;
+        }
+
+        .chapter-arrow {
+            color: #ccc;
+            font-size: 0.8rem;
+        }
+
+        /* Reader Area (Simulation) */
+        .reader-area {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            margin-top: 30px;
+            text-align: justify;
+        }
+
+        .reader-content h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        .reader-content p {
+            margin-bottom: 1.5em;
+            text-indent: 2em;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .reader-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #bdc3c7;
+            padding: 40px 0;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Utility */
+        .badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            margin-left: 8px;
+        }
+        .badge-new { background-color: #e74c3c; color: white; }
+        .badge-hot { background-color: #f39c12; color: white; }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <a href="#" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            文学阁
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">分类</a></li>
+                <li><a href="#">排行榜</a></li>
+                <li><a href="#">书架</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>妲己的任务</h1>
+        <p>穿越千年的宿命纠葛，一段关于救赎与抉择的奇幻旅程。点击下方按钮开始阅读或下载 TXT 格式文档。</p>
+        <div class="hero-actions">
+            <a href="#reader" class="btn btn-primary">立即阅读</a>
+            <button class="btn btn-outline" onclick="alert('下载功能将在跳转至下载页后生效。')">下载 TXT</button>
+        </div>
+    </section>
+
+    <div class="grid-container">
+        <!-- Sidebar -->
+        <aside>
+            <div class="info-card">
+                <h3>小说简介</h3>
+                <p style="margin-bottom: 15px; font-size: 0.95rem; color: #555;">
+                    女主角苏妲己穿越到了现代，原本以为只是简单的游戏，却意外卷入了豪门恩怨与古武传承的漩涡中。她必须在完成“收集宿主执念”的任务与保护身边人的安全之间寻找平衡。
+                </p>
+                <div class="book-meta-item">
+                    <span>作者</span>
+                    <span>墨染青衣</span>
+                </div>
+                <div class="book-meta-item">
+                    <span>状态</span>
+                    <span>连载中</span>
+                </div>
+                <div class="book-meta-item">
+                    <span>字数</span>
+                    <span>42.5万字</span>
+                </div>
+                <div class="book-meta-item">
+                    <span>最后更新</span>
+                    <span>2023-10-24</span>
+                </div>
+                <div style="margin-top: 20px;">
+                    <div class="tags">
+                        <span>奇幻</span>
+                        <span>穿越</span>
+                        <span>言情</span>
+                        <span>爽文</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>阅读方式</h3>
+                <ul style="list-style: none; font-size: 0.9rem; color: #666;">
+                    <li style="margin-bottom: 10px; display: flex; align-items: center;">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px; color: var(--primary-color);"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/></svg>
+                        在线阅读（网页版）
+                    </li>
+                    <li style="margin-bottom: 10px; display: flex; align-items: center;">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px; color: var(--primary-color);"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+                        下载 TXT 格式
+                    </li>
+                    <li style="margin-bottom: 10px; display: flex; align-items: center;">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 8px; color: var(--primary-color);"><path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/><path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg>
+                        加入书架
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <section class="chapter-section">
+            <div class="chapter-header">
+                <h2>章节目录</h2>
+            </div>
+            <ul class="chapter-list">
+                <li><a href="#reader" class="chapter-item">
+                    <span class="chapter-title">第1章 穿越后的苏醒 <span class="badge badge-new">新</span></span>
+                    <span class="chapter-date">10-24</span>
+                    <span class="chapter-arrow">&rarr;</span>
+                </a></li>
+                <li><a href="#reader" class="chapter-item">
+                    <span class="chapter-title">第2章 豪门晚宴的危机</span>
+                    <span class="chapter-date">10-23</span>
+                    <span class="chapter-arrow">&rarr;</span>
+                </a></li>
+                <li><a href="#reader" class="chapter-item">
+                    <span class="chapter-title">第3章 意外的守护</span>
+                    <span class="chapter-date">10-22</span>
+                    <span class="chapter-arrow">&rarr;</span>
+                </a></li>
+                <li><a href="#reader" class="chapter-item">
+                    <span class="chapter-title">第4章 任务系统的提示</span>
+                    <span class="chapter-date">10-21</span>
+                    <span class="chapter-arrow">&rarr;</span>
+                </a></li>
+                <li><a href="#reader" class="chapter-item">
+                    <span class="chapter-title">第5章 初识古武界</span>
+                    <span class="chapter-date">10-20</span>
+                    <span class="chapter-arrow">&rarr;</span>
+                </a></li>
+                <li><a href="#reader" class="chapter-item">
+                    <span class="chapter-title">第6章 前任的挑衅</span>
+                    <span class="chapter-date">10-19</span>
+                    <span class="chapter-arrow">&rarr;</span>
+                </a></li>
+                <li><a href="#reader" class="chapter-item">
+                    <span class="chapter-title">第7章 伪装的温柔</span>
+                    <span class="chapter-date">10-18</span>
+                    <span class="chapter-arrow">&rarr;</span>
+                </a></li>
+                <li><a href="#reader" class="chapter-item">
+                    <span class="chapter-title">第8章 意外的相遇</span>
+                    <span class="chapter-date">10-17</span>
+                    <span class="chapter-arrow">&rarr;</span>
+                </a></li>
+                <li><a href="#reader" class="chapter-item">
+                    <span class="chapter-title">第9章 谁是猎物</span>
+                    <span class="chapter-date">10-16</span>
+                    <span class="chapter-arrow">&rarr;</span>
+                </a></li>
+                <li><a href="#reader" class="chapter-item">
+                    <span class="chapter-title">第10章 决战前夕</span>
+                    <span class="chapter-date">10-15</span>
+                    <span class="chapter-arrow">&rarr;</span>
+                </a></li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Reader Simulation -->
+    <div id="reader" class="reader-area">
+        <div class="reader-content">
+            <h2>第1章 穿越后的苏醒</h2>
+            <p>头痛欲裂。</p>
+            <p>苏妲己缓缓睁开眼睛，入目不是熟悉的现代公寓天花板，而是一顶雕花的古式床顶。空气中弥漫着淡淡的檀香，混合着一丝不易察觉的血腥味。</p>
+            <p>“这是哪？我明明是在加班赶策划案，怎么会……”她试图坐起来，却感觉到身体沉重得像灌了铅。</p>
+            <p>记忆如潮水般涌来。前世的她是顶级猎头，为了拿下那个不可能的项目，连续熬夜一周，最后在办公室猝死。再睁眼时，她竟然变成了商朝的苏妲己？</p>
+            <p>不，不对。记忆里并没有狐狸精的戏码，她是一个现代人灵魂附体的“苏妲己”。而且，眼前似乎还有一个身穿古装、神色慌张的老者。</p>
+            <p>“小姐，您终于醒了！”老者扑通一声跪在地上，老泪纵横，“若是再晚醒一刻，奴才们都要被斩了啊！”</p>
+            <p>苏妲己心中一凛。看来，她穿越到了一个动荡的时期。老者自称是贴身侍卫，称她为“小姐”，并告知她正身处纣王的行宫之中。</p>
+            <p>她低头看了看自己的双手，纤细白皙，不再是敲键盘的那双手，但那股子不服输的劲头却丝毫未减。</p>
+            <p>“任务呢？”苏妲己脑海中突然浮现出一个机械的声音。既然穿越了，系统难道不会带过来吗？</p>
+            <p>“任务？”老者一脸茫然，“小姐您在说什么胡话？如今大王心情不佳，您若是再不露面，恐怕……”</p>
+            <p>苏妲己眯起眼睛。大王？纣王？</p>
+            <p>就在这时，门外传来一声沉闷的通报：“大王驾到。”</p>
+            <p>苏妲己深吸一口气。既然来了，那就看看这个所谓的“任务”到底是什么。</p>
+        </div>
+        <div class="reader-nav">
+            <a href="#" class="btn btn-outline" style="color: var(--secondary-color); border-color: #ddd;">上一章</a>
+            <span style="display: flex; align-items: center; font-size: 0.9rem; color: #999;">第1章 / 共 300 章</span>
+            <a href="#" class="btn btn-primary">下一章</a>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2023 文学阁 版权所有</p>
+        <p style="margin-top: 10px; color: #7f8c8d; font-size: 0.8rem;">
+            本站所有小说内容均来自网络，仅供交流学习使用，请支持正版。
+        </p>
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+</html>
