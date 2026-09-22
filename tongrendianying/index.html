@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>同人电影-同人作品分享与创作指南平台</title>
+    <meta name="description" content="本站专注于同人电影资源的分享与交流，提供同人短片推荐、创作教程、影视素材下载及同好社区互动，是同人创作者与爱好者的首选平台。">
+    <meta name="keywords" content="同人电影,同人短片,影视剪辑,同人创作,二创视频,影视解说">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --primary-hover: #4f46e5;
+            --secondary-color: #ec4899;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--text-main);
+        }
+
+        .header-actions button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .header-actions button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .search-bar {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 14px 20px;
+            padding-right: 50px;
+            border-radius: 50px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-card);
+            color: var(--text-main);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-bar input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            bottom: 5px;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .view-all {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        /* Video Card */
+        .card {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary-color);
+        }
+
+        .card-thumb {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #000;
+        }
+
+        .card-thumb img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover .card-thumb img {
+            opacity: 1;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .play-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.5;
+        }
+
+        .tags {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            background-color: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        /* Category Grid */
+        .category-item {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .category-item:hover {
+            border-color: var(--secondary-color);
+            background-color: rgba(236, 72, 153, 0.05);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .category-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .category-count {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 5px;
+        }
+
+        /* Guide / Info Section */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .info-block h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .info-block p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .step-list {
+            counter-reset: step;
+        }
+
+        .step-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 20px;
+        }
+
+        .step-item::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 28px;
+            height: 28px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .faq-item {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0b1120;
+            padding: 60px 0 30px;
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 15px;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                display: none; /* Simple hiding for mobile, ideally a hamburger menu */
+            }
+
+            .header-actions {
+                display: none;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">同人电影</a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">热门推荐</a></li>
+                    <li><a href="#">分类浏览</a></li>
+                    <li><a href="#">创作教程</a></li>
+                    <li><a href="#">社区讨论</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button>投稿作品</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>探索二次元与现实的<br><span>无限可能</span></h1>
+                <p>汇聚全球优质同人短片、影视二创与独立电影作品。发现你喜爱的角色新故事，支持原创同好。</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="搜索作品、作者或原作IP...">
+                    <button type="button">🔍</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">热门分类</h2>
+                    <a href="#" class="view-all">查看全部 ></a>
+                </div>
+                <div class="grid-4">
+                    <div class="category-item">
+                        <span class="category-icon">🎬</span>
+                        <div class="category-name">影视二创</div>
+                        <div class="category-count">12,450 部作品</div>
+                    </div>
+                    <div class="category-item">
+                        <span class="category-icon">🎮</span>
+                        <div class="category-name">游戏同人</div>
+                        <div class="category-count">8,320 部作品</div>
+                    </div>
+                    <div class="category-item">
+                        <span class="category-icon">📚</span>
+                        <div class="category-name">小说改编</div>
+                        <div class="category-count">5,680 部作品</div>
+                    </div>
+                    <div class="category-item">
+                        <span class="category-icon">🎭</span>
+                        <div class="category-name">原创短剧</div>
+                        <div class="category-count">3,150 部作品</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trending Section -->
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">本周热门</h2>
+                    <a href="#" class="view-all">更多推荐 ></a>
+                </div>
+                <div class="grid-3">
+                    <!-- Card 1 -->
+                    <article class="card">
+                        <div class="card-thumb">
+                            <img src="https://picsum.photos/seed/cyberpunk/400/225" alt="同人电影封面">
+                            <div class="play-overlay">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span>科幻 / 赛博朋克</span>
+                                <span>2天前</span>
+                            </div>
+                            <h3 class="card-title">霓虹都市：2077同人短篇</h3>
+                            <p class="card-desc">基于原作《赛博朋克2077》的同人短片，讲述了V在夜之城的另一段不为人知的故事...</p>
+                            <div class="tags">
+                                <span class="tag">赛博朋克</span>
+                                <span class="tag">动作</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="card">
+                        <div class="card-thumb">
+                            <img src="https://picsum.photos/seed/fantasy/400/225" alt="同人电影封面">
+                            <div class="play-overlay">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span>奇幻 / 冒险</span>
+                                <span>5天前</span>
+                            </div>
+                            <h3 class="card-title">龙之谷：勇者归来</h3>
+                            <p class="card-desc">经典的RPG游戏同人电影，高质量CG渲染，重现了艾琳娜大陆的史诗战役。</p>
+                            <div class="tags">
+                                <span class="tag">游戏</span>
+                                <span class="tag">CG动画</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="card">
+                        <div class="card-thumb">
+                            <img src="https://picsum.photos/seed/drama/400/225" alt="同人电影封面">
+                            <div class="play-overlay">
+                                <div class="play-icon">▶</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-meta">
+                                <span>剧情 / 情感</span>
+                                <span>1周前</span>
+                            </div>
+                            <h3 class="card-title">樱花树下的约定</h3>
+                            <p class="card-desc">一部关于成长与告别的真人短剧，细腻的镜头语言还原了青春的遗憾与美好。</p>
+                            <div class="tags">
+                                <span class="tag">真人短剧</span>
+                                <span class="tag">青春</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Creation Guide Section -->
+        <section style="background-color: #131c31;">
+            <div class="container">
+                <div class="info-grid">
+                    <!-- Left: Guide Content -->
+                    <div class="info-block">
+                        <h2 class="section-title">创作指南</h2>
+                        <h3>如何制作一部优秀的同人电影？</h3>
+                        <p>同人电影是创作者表达对原作热爱的重要方式。从剧本改编到后期剪辑，每一步都需要精心打磨。</p>
+                        
+                        <div class="step-list">
+                            <div class="step-item">
+                                <h4>1. 选材与改编</h4>
+                                <p>选择你熟悉的原作IP，挖掘其中未被展现的支线故事或人物内心世界。剧本改编要尊重原作基调，同时加入独特的个人视角。</p>
+                            </div>
+                            <div class="step-item">
+                                <h4>2. 前期筹备</h4>
+                                <p>确定拍摄风格、分镜脚本，并准备好所需的服装、道具和场景。如果是短片，可利用绿幕技术降低拍摄成本。</p>
+                            </div>
+                            <div class="step-item">
+                                <h4>3. 拍摄与剪辑</h4>
+                                <p>注重光影运用和镜头节奏。剪辑时注意音乐与画面的同步，通过音效增强沉浸感。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: FAQ -->
+                    <div class="info-block">
+                        <h2 class="section-title">常见问题</h2>
+                        
+                        <div class="faq-item active">
+                            <div class="faq-question">Q: 使用原作素材进行同人创作需要注意什么？ <span>+</span></div>
+                            <div class="faq-answer">A: 请务必遵守《数字千年版权法》及原作官方的二次创作规则。避免直接使用原作的高清截图或完整剧情，建议通过重新演绎、混剪或微小的剧情改动来体现原创性。</div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Q: 在哪里可以发布我的同人作品？ <span>+</span></div>
+                            <div class="faq-answer">A: 本平台以及B站、YouTube等视频平台都是发布同人电影的优质渠道。在发布时，建议在标题和简介中明确标注“非官方作品”及原作版权方信息。</div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question">Q: 同人电影能商用吗？ <span>+</span></div>
+                            <div class="faq-answer">A: 通常情况下，个人欣赏的非盈利性质同人作品属于合理使用范畴。但若涉及商业合作、盈利广告或大规模发行，必须获得原作版权方的授权，否则可能面临法律风险。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- New Arrivals -->
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">最新上线</h2>
+                    <a href="#" class="view-all">查看全部 ></a>
+                </div>
+                <div class="grid-4">
+                    <article class="card">
+                        <div class="card-thumb">
+                            <img src="https://picsum.photos/seed/anime/300/169" alt="封面">
+                            <div class="play-overlay"><div class="play-icon">▶</div></div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">日常系：放学后的练习室</h3>
+                            <div class="card-meta"><span>音乐MV</span></div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-thumb">
+                            <img src="https://picsum.photos/seed/horror/300/169" alt="封面">
+                            <div class="play-overlay"><div class="play-icon">▶</div></div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">午夜列车：未知的乘客</h3>
+                            <div class="card-meta"><span>悬疑惊悚</span></div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-thumb">
+                            <img src="https://picsum.photos/seed/love/300/169" alt="封面">
+                            <div class="play-overlay"><div class="play-icon">▶</div></div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">橘子汽水味的夏天</h3>
+                            <div class="card-meta"><span>校园爱情</span></div>
+                        </div>
+                    </article>
+                    <article class="card">
+                        <div class="card-thumb">
+                            <img src="https://picsum.photos/seed/space/300/169" alt="封面">
+                            <div class="play-overlay"><div class="play-icon">▶</div></div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">星际穿越：后传</h3>
+                            <div class="card-meta"><span>硬科幻</span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">同人电影</a>
+                    <p>致力于为同人创作者和爱好者提供最优质的交流平台。在这里，每一个热爱故事的人都能找到共鸣。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>浏览</h4>
+                    <ul>
+                        <li><a href="#">最新发布</a></li>
+                        <li><a href="#">热门排行</a></li>
+                        <li><a href="#">高分推荐</a></li>
+                        <li><a href="#">分类筛选</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于</h4>
+                    <ul>
+                        <li><a href="#">平台规则</a></li>
+                        <li><a href="#">版权声明</a></li>
+                        <li><a href="#">投稿指南</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>社区</h4>
+                    <ul>
+                        <li><a href="#">创作者论坛</a></li>
+                        <li><a href="#">素材分享</a></li>
+                        <li><a href="#">技术交流</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 同人电影平台. All Rights Reserved. 本站内容均为用户上传，不代表本站立场.
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <script>
+        // Simple FAQ Interaction
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close others
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+                              </html>
